@@ -282,5 +282,7 @@ Swagger UI:
 # 📬 Contact
 
 Made with  by Xədicə Paşayeva
+
 📧 Email: xadijapashayeva@gmail.com
+
 🔗 LinkedIn: https://www.linkedin.com/in/xadija-pashayeva
