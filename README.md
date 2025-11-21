@@ -27,30 +27,6 @@ The system uses **JWT authentication**, **Redis token blacklisting**, **rate lim
 
 ---
 
-🧰 Tech Stack
-
-| Layer / Purpose            | Technology Used                                 |
-|----------------------------|--------------------------------------------------|
-| Backend Framework          | Spring Boot 3                                    |
-| Language                   | Java 17                                          |
-| Build Tool                 | Maven                                            |
-| Database                   | PostgreSQL                                       |
-| ORM / Persistence          | Spring Data JPA                                  |
-| Authentication             | Spring Security + JWT                            |
-| Security Helpers           | CustomUserDetails, Filters, TokenProvider       |
-| Token Blacklisting         | Redis (optional) + In-Memory fallback            |
-| Rate Limiting              | RedisTemplate + Local In-Memory Counter          |
-| AI Integration             | HuggingFace API (WebClient)                      |
-| HTTP Client                | Spring WebFlux WebClient                         |
-| Prompt Engineering         | Custom PromptBuilderService                      |
-| AI JSON Parsing            | Jackson ObjectMapper                             |
-| Mapping DTO ↔ Entity       | MapStruct                                        |
-| Validation                 | Jakarta Validation (Bean Validation)             |
-| Global Exception Handling  | @RestControllerAdvice + custom exception classes |
-| Logging                    | Lombok @Slf4j                                     |
-| Build & Project Structure  | Spring Boot Starter Packages                     |
-| Documentation              | Swagger / Springdoc OpenAPI                      |
-| Testing                    | JUnit (default Spring Boot test structure)        |
 
 
 # 🧱 Project Structure
@@ -282,7 +258,5 @@ Swagger UI:
 # 📬 Contact
 
 Made with  by Xədicə Paşayeva
-
 📧 Email: xadijapashayeva@gmail.com
-
 🔗 LinkedIn: https://www.linkedin.com/in/xadija-pashayeva

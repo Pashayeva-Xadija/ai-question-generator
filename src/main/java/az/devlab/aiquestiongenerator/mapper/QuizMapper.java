@@ -1,34 +1,39 @@
 package az.devlab.aiquestiongenerator.mapper;
 
-import az.devlab.aiquestiongenerator.model.Quiz;
-import az.devlab.aiquestiongenerator.model.QuizQuestion;
 import az.devlab.aiquestiongenerator.dto.QuestionResponse;
 import az.devlab.aiquestiongenerator.dto.QuizResponse;
-import org.mapstruct.*;
+import az.devlab.aiquestiongenerator.model.Quiz;
+import az.devlab.aiquestiongenerator.model.QuizQuestion;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Mapper(componentModel = "spring", uses = {QuestionMapper.class})
-public interface QuizMapper {
+public abstract class QuizMapper {
+
+    @Autowired
+    protected QuestionMapper questionMapper;
 
     @Mapping(target = "createdById", source = "createdBy.id")
     @Mapping(target = "questions", expression = "java(mapQuestions(entity))")
-    QuizResponse toResponse(Quiz entity);
+    public abstract QuizResponse toResponse(Quiz entity);
 
-    default List<QuestionResponse> mapQuestions(Quiz quiz) {
+    protected List<QuestionResponse> mapQuestions(Quiz quiz) {
+        if (quiz.getQuizQuestions() == null) {
+            return List.of();
+        }
+
         return quiz.getQuizQuestions()
                 .stream()
-                .sorted((a, b) -> Integer.compare(
-                        a.getOrderIndex() == null ? 0 : a.getOrderIndex(),
-                        b.getOrderIndex() == null ? 0 : b.getOrderIndex()
+                .sorted(Comparator.comparing(
+                        qq -> qq.getOrderIndex() == null ? 0 : qq.getOrderIndex()
                 ))
-                .map(qq -> qq.getQuestion())
-                .map(q -> questionMapper().toResponse(q))
+                .map(QuizQuestion::getQuestion)
+                .map(questionMapper::toResponse)
                 .collect(Collectors.toList());
     }
-
-    QuestionMapper questionMapper();
 }
-
-

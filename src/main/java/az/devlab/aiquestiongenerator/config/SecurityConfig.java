@@ -1,7 +1,7 @@
 package az.devlab.aiquestiongenerator.config;
 
-import az.devlab.aiquestiongenerator.security.jwt.JwtAuthenticationEntryPoint;
-import az.devlab.aiquestiongenerator.security.jwt.JwtAuthenticationFilter;
+import az.devlab.aiquestiongenerator.security.JwtAuthenticationEntryPoint;
+import az.devlab.aiquestiongenerator.security.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
